@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="idioma" type="button">English</button>
+    <br>
+    <p id="diassem"></p>
+    <p id="diasmes"></p>
+    <script>
+        var semanaES=["lun", "mar", "mie", "jue", "vie", "sab", "dom"];
+        var semanaEN=["mon", "tue", "wen", "thu", "fri", "sat", "sun"];
+        var mes =[];
+        var diasmes="";
+        var diassemana ="";
+        
+        //Imprimimos en el parrafo id="diassem" los dias de la semana en español
+        for (var i=0; i<=6; i++) {
+            diassemana = diassemana + semanaES[i] + "&nbsp&nbsp&nbsp";
+        };
+        document.getElementById('diassem').innerHTML=diassemana;
+
+        //Imprimimos en el parrafo id="diasmes" los días del mes
+        for (var i=0; i<=30; i++) {
+            mes.push(i+1);
+        };
+        for (var i=0; i<mes.length; i++) {
+            if ((i+1)<10){
+                diasmes = diasmes + mes[i]+"&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp";
+            } else {
+                diasmes = diasmes + mes[i]+"&nbsp&nbsp&nbsp&nbsp&nbsp";
+            }
+            if ((i+1)%7==0) {
+                diasmes = diasmes + "<br>";
+            };
+        };
+        document.getElementById('diasmes').innerHTML=diasmes;
+
+        //Añadimos el listener al botón id="idioma" para cambiar el lenguaje de los días de la semana
+        document.getElementById('idioma').addEventListener("click", cambiaIdioma, false);
+        function cambiaIdioma() {
+            diassemana = "";
+            for (var i=0; i<=6; i++) {
+                diassemana = diassemana + semanaEN[i] + "&nbsp&nbsp&nbsp";
+            };
+            document.getElementById('diassem').innerHTML=diassemana;
+        }
+    </script>
+</body>
+</html>
